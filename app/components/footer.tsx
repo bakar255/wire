@@ -115,10 +115,6 @@ export default function Footer() {
                         © {new Date().getFullYear()} Wire Inc. Tous droits réservés.
                     </p>
                     <div className="flex gap-6">
-                        {/* Social icons placeholders */}
-                        <div className="w-5 h-5 bg-zinc-800 rounded-full hover:bg-zinc-700 cursor-pointer transition-colors"></div>
-                        <div className="w-5 h-5 bg-zinc-800 rounded-full hover:bg-zinc-700 cursor-pointer transition-colors"></div>
-                        <div className="w-5 h-5 bg-zinc-800 rounded-full hover:bg-zinc-700 cursor-pointer transition-colors"></div>
                     </div>
                 </div>
             </div>
