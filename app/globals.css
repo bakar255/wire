@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #ffffff;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #10b981;
+  --accent-glow: rgba(59, 130, 246, 0.5);
 }
 
 @theme inline {
@@ -12,45 +15,59 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
-
 
 /* Hero section */
 .Hero {
   width: 100%;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(180deg, #FFFFFF 0%, #7DD7DE 100%);
+  background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.Hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .hero-container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 4rem;
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 992px) {
   .hero-container {
-    grid-template-columns: 1.2fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
   }
 }
 
@@ -66,41 +83,104 @@ body {
 }
 
 .HeroText {
-  font-family: 'Syne';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 50px;
-  line-height: 1.05;
-  color: #000000;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.1;
+  color: #ffffff;
   margin: 0;
+  letter-spacing: -0.02em;
+  background: linear-gradient(to right, #fff, #a5a5a5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-@media (min-width: 768px) { .HeroText { font-size: 64px; } }
+@media (min-width: 768px) { .HeroText { font-size: 72px; } }
 
 .HeroSub { 
-  margin-top: 16px; 
-  font-size: 16px; 
+  margin-top: 24px; 
+  font-size: 18px; 
   line-height: 1.6; 
-  color: #0b0b0b; 
-  max-width: 52ch; 
+  color: #a1a1aa; 
+  max-width: 54ch; 
 }
 
-.hero-cta { margin-top: 24px; }
+.hero-cta { margin-top: 32px; }
 
 .install-btn {
   border-radius: 9999px;
-  background: #000;
-  color: #fff;
-  padding: 10px 16px;
+  background: #fff;
+  color: #000;
+  padding: 16px 32px;
+  font-weight: 600;
+  font-size: 16px;
   border: none;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hero-visual { display: flex; justify-content: center; }
+.install-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(255, 255, 255, 0.5);
+}
+
+.hero-visual { 
+  display: flex; 
+  justify-content: center; 
+  position: relative;
+}
 
 .frame {
-  width: 600px;
+  width: 100%;
+  max-width: 500px;
   height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
 }
 
-@media (min-width: 992px) { .frame { width: 400px; } }
+@media (min-width: 992px) { .frame { max-width: 450px; } }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.group-carousel {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.card-carousel {
+  flex: 0 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.card-carousel:hover {
+  transform: scale(1.05);
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+  width: max-content;
+}
+
+.animate-scroll-second {
+  animation: scroll 20s linear infinite;
+  animation-delay: -10s; /* Décalage pour synchronisation */
+  width: max-content;
+}
+
+.carousel-container:hover .animate-scroll,
+.carousel-container:hover .animate-scroll-second {
+  animation-play-state: paused;
+}

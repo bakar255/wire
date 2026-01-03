@@ -1,31 +1,44 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
+import Logo from "./ui/Logo";
 
 export default function Header() {
   return (
-    <header className="w-full bg-white sticky top-0 z-50  backdrop-blur ">
-      <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-semibold tracking-tight">
-          Wire
-        </Link>
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <div className="mx-4 w-full bg-[]  max-w-5xl rounded-full border backdrop-blur-md px-6 py-3 flex items-center justify-between shadow-lg shadow-black/20">
+       <div className="mt-5">
+      <Logo  />
+       </div>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm text-black/70">
-          <Link href="#compte" className="hover:text-black">Compte</Link>
-          <Link href="#tarifs" className="hover:text-black">Tarifs</Link>
-          <Link href="#solutions" className="hover:text-black">Solutions</Link>
-          <Link href="#support" className="hover:text-black">Support</Link>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+          <Link href="#compte" className="hover:text-white transition-colors">Compte</Link>
+          <Link href="#tarifs" className="hover:text-white transition-colors">Tarifs</Link>
+          <Link href="#solutions" className="hover:text-white transition-colors">Solutions</Link>
+          <Link href="#support" className="hover:text-white transition-colors">Support</Link>
         </nav>
-        <div className="flex items-center gap-3">
+        <div>
+           <div className="flex items-center gap-3">
           <Link
             href="#signup"
-            className="rounded-full bg-black text-white px-4 py-2 text-sm hover:bg-black/90"
+            className="rounded-full bg-white text-black px-5 py-2 text-sm font-semibold hover:bg-zinc-200 transition-colors"
           >
             S'inscrire
           </Link>
         </div>
+
+        </div>
+
+       
       </div>
-    </header>
+      
+    </motion.header>
   );
 }
 
