@@ -3,6 +3,7 @@ import Logo from "./ui/Logo";
 import { div } from "framer-motion/client";
 
 export default function Footer() {
+  
     return (
         <div>
             <div className="max-w-full py-16 bg-gradient-to-r from-black to-gray-900">
@@ -112,7 +113,7 @@ export default function Footer() {
 
                 <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-zinc-600 text-sm">
-                        © {new Date().getFullYear()} Wire Inc. Tous droits réservés.
+                        © {new Date().getFullYear()} Wire Inc. Tous droits réservés. -- Built by Bakar255
                     </p>
                     <div className="flex gap-6">
                     </div>

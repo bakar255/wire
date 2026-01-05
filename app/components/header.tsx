@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Logo from "./ui/Logo";
 
 export default function Header() {
+
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6"
@@ -26,7 +27,7 @@ export default function Header() {
         <div>
            <div className="flex items-center gap-3">
           <Link
-            href="#signup"
+            href="/signup"
             className="rounded-full bg-white text-black px-5 py-2 text-sm font-semibold hover:bg-zinc-200 transition-colors"
           >
             S'inscrire
