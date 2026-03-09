@@ -24,16 +24,19 @@ export default function Header() {
           <Link href="#solutions" className="hover:text-white transition-colors">Solutions</Link>
           <Link href="#support" className="hover:text-white transition-colors">Support</Link>
         </nav>
-        <div>
-           <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3">
+          <Link
+            href="/login"
+            className="text-zinc-400 hover:text-white text-sm font-medium transition-colors"
+          >
+            Se connecter
+          </Link>
           <Link
             href="/signup"
             className="rounded-full bg-white text-black px-5 py-2 text-sm font-semibold hover:bg-zinc-200 transition-colors"
           >
             S'inscrire
           </Link>
-        </div>
-
         </div>
 
        
